@@ -16,5 +16,4 @@ test('creates an Engineer object', () => {
     expect(engineer.getRole()).toEqual(expect.stringContaining('Engineer'))
 
     expect(engineer.getGithub()).toEqual(expect.stringContaining(engineer.github))
-
   })

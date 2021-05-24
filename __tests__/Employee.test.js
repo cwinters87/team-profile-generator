@@ -11,5 +11,4 @@ test('creates an employee object', () => {
     expect(employee.getId()).toEqual(expect.stringContaining(employee.id))
     expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email))
     expect(employee.getRole()).toEqual(expect.stringContaining('Employee'))
-
   })

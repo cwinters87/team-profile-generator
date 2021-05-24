@@ -16,5 +16,4 @@ test('creates an Intern object', () => {
     expect(intern.getRole()).toEqual(expect.stringContaining('Intern'))
 
     expect(intern.getSchool()).toEqual(expect.stringContaining(intern.school))
-
   })
