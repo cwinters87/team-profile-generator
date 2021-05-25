@@ -8,10 +8,14 @@ const Manager = require('./lib/Manager')
 //start
 // new array of employees?
 class Prompt {
+    
     constructor() {
         this.projectManager
         this.engineers = []
         this.interns = []
+        this.engineerCount = 0
+
+        
     }
 
     initializeTeam(){
@@ -38,12 +42,14 @@ class Prompt {
             const manager = new Manager(answers.manager, answers.id, answers.email, answers.officeNumber)
             this.projectManager = manager
 
-            console.log(this.projectManager)
+            //console.log(this.projectManager)
         })
         
         }
 
     initializeEngineers() {
+        
+        console.log(this.engineerCount)
         inquirer.prompt([{
             type: 'text',
             name: 'engName',
@@ -64,15 +70,37 @@ class Prompt {
             name: "github",
             message: "What is their GitHub username? "
         }]).then(answers => {
-            this.engineers.push(new Engineer(answers.engName, answers.engId, answers.engEmail, answers.github))
-
+            //engineerName = answers.engName
+            //console.log(answers)
+            let count = this.engineerCount.toString()
+            this.engineers[count] = answers
+            
+            console.log(this.engineers)
+            console.log(Object.keys(this.engineers))
             
 
 
+
             
+
+            // const engineer = new Engineer(answers.engName, answers.engId, answers.engEmail, answers.github)
+            // console.log(engineer)
+            // console.log(engineer.name)
+            // const engineerName = engineer.name
+            // console.log(typeof engineerName)
+            // const engineerArr = [engineerName]
+            // console.log(engineerArr)
+            // console.log(typeof engineerArr)
+
+
+            
+            //this.engineers.push(new Engineer(answers.engName, answers.engId, answers.engEmail, answers.github))
+
+                  
 
             console.log(this.engineers.length)
-
+            console.log(this.engineers[0])
+            
 
         })
     }
