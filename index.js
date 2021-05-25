@@ -4,6 +4,7 @@ const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const Manager = require('./lib/Manager')
+const generatePage = require('./src/page-template')
 
 //start
 // new array of employees?
@@ -14,6 +15,7 @@ class Prompt {
         this.engineers = []
         this.interns = []
         this.engineerCount = 0
+        this.internCount = 0
 
         
     }
@@ -50,6 +52,7 @@ class Prompt {
     initializeEngineers() {
         
         console.log(this.engineerCount)
+        this.engineerCount++
         inquirer.prompt([{
             type: 'text',
             name: 'engName',
@@ -70,29 +73,40 @@ class Prompt {
             name: "github",
             message: "What is their GitHub username? "
         }]).then(answers => {
-            //engineerName = answers.engName
-            //console.log(answers)
+            
             let count = this.engineerCount.toString()
-            this.engineers[count] = answers
-            
-            console.log(this.engineers)
+            this.engineers[count] = new Engineer(answers.engName, answers.engId, answers.engEmail, answers.github)            
+            // console.log(this.engineers)
             console.log(Object.keys(this.engineers))
+            console.log(this.engineers.length - 1)
+            // console.log(this.engineers[0])
             
-
-
-
-            
-
-                  
-
-            console.log(this.engineers.length)
-            console.log(this.engineers[0])
-            
+            return this.userSwitch()
 
         })
     }
 
+    userSwitch() {
+        inquirer
+        .prompt({
+          type: 'list',
+          message: 'What would you like to do next?',
+          name: 'action',
+          choices: ['Add new Engineer', 'Finish Team']
+        })
+        .then(({ action }) => {
+            if (action === 'Add new Engineer') {
+                return this.initializeEngineers()
+            }
+            else {
+                console.log(`You have ${this.engineers.length - 1} engineers on your Team`)
+                generatePage(this.engineers)
 
+
+            }
+        })
+
+    }
 
 
 
