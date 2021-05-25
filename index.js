@@ -83,19 +83,6 @@ class Prompt {
 
             
 
-            // const engineer = new Engineer(answers.engName, answers.engId, answers.engEmail, answers.github)
-            // console.log(engineer)
-            // console.log(engineer.name)
-            // const engineerName = engineer.name
-            // console.log(typeof engineerName)
-            // const engineerArr = [engineerName]
-            // console.log(engineerArr)
-            // console.log(typeof engineerArr)
-
-
-            
-            //this.engineers.push(new Engineer(answers.engName, answers.engId, answers.engEmail, answers.github))
-
                   
 
             console.log(this.engineers.length)
