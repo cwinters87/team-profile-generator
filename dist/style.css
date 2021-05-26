@@ -1,0 +1,36 @@
+
+header {
+    background-color: lightcoral;
+    text-align: center;
+    height: 100px;
+}
+
+header h1 {
+    padding-top: 25px;
+}
+
+#section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.list-group {
+    padding: 15%;
+}
+
+.card-body {
+    background-color: steelblue;
+    color: white;
+}
+
+.list-group {
+    background-color: whitesmoke;
+}
+
+.card {
+    margin: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
