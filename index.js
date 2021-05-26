@@ -1,7 +1,6 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
-const generateSite = require('./src/generate-site')
-const generatePage = require('./src/page-template')
+const generatePageTemplate = require('./src/page-template')
 const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
@@ -12,7 +11,6 @@ const generateInternCards = require('./src/intern-card')
 const writeFile = require('./src/generate-site')
 
 //start
-// new array of employees?
 class Prompt {
     
     constructor() {
@@ -77,9 +75,7 @@ class Prompt {
         }]).then(answers => {
             
             let count = this.engineerCount.toString()
-            this.engineers[count] = new Engineer(answers.engName, answers.engId, answers.engEmail, answers.github)
-            //console.log(Object.keys(this.engineers))
-            //console.log(this.engineers.length - 1)            
+            this.engineers[count] = new Engineer(answers.engName, answers.engId, answers.engEmail, answers.github)        
             return this.userSwitch()
         })
     }
@@ -109,9 +105,7 @@ class Prompt {
             message: "What is their school they attended? "
         }]).then(answers => {            
             let count = this.internCount.toString()
-            this.interns[count] = new Intern(answers.intName, answers.intId, answers.intEmail, answers.school)            
-            //console.log(Object.keys(this.interns))
-            //console.log(this.interns.length - 1)            
+            this.interns[count] = new Intern(answers.intName, answers.intId, answers.intEmail, answers.school)          
             return this.userSwitch()
         })
     }
@@ -137,13 +131,8 @@ class Prompt {
                 return this.initializeInterns()
             }
             else {
-                //console.log("Team created!")
-                // generateInternCards(this.interns)
-                // generateEngineerCards(this.engineers)
-                // generateManagerCard(this.projectManager)
-                //generateTemplate()
-                writeFile(generatePage())
-
+                console.log("Team created!    index.html generated")                
+                writeFile(generatePageTemplate(generateManagerCard(this.projectManager), generateEngineerCards(this.engineers), generateInternCards(this.interns)))
             }
         })
     }
@@ -168,16 +157,6 @@ class Prompt {
     // }
 
     }
-
-// please enter the team manager’s name, employee ID, email address, and office number
-
-//then menu to select engineer or intern to add to team
-
-//if selected engineer then enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-
-//if selected Intern then enter the intern’s name, ID, email, and school, and I am taken back to the menu
-
-//when selected Finished building Team - the HTML is generated
 
 new Prompt().initializeTeam()
 
