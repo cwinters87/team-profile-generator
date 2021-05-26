@@ -1,5 +1,7 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
+const generateSite = require('./src/generate-site')
+const generatePage = require('./src/page-template')
 const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
@@ -7,6 +9,7 @@ const Manager = require('./lib/Manager')
 const generateManagerCard = require('./src/manager-card')
 const generateEngineerCards = require('./src/engineer-card')
 const generateInternCards = require('./src/intern-card')
+const writeFile = require('./src/generate-site')
 
 //start
 // new array of employees?
@@ -134,10 +137,13 @@ class Prompt {
                 return this.initializeInterns()
             }
             else {
-                console.log("Team created!")
-                generateInternCards(this.interns)
-                generateEngineerCards(this.engineers)
-                generateManagerCard(this.projectManager)
+                //console.log("Team created!")
+                // generateInternCards(this.interns)
+                // generateEngineerCards(this.engineers)
+                // generateManagerCard(this.projectManager)
+                //generateTemplate()
+                writeFile(generatePage())
+
             }
         })
     }

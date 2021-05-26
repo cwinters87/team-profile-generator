@@ -1,6 +1,6 @@
 
 function generateInternCards(data) {
-    console.table(data)
+    //console.table(data)
 }
 
 
