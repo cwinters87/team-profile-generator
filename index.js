@@ -4,7 +4,9 @@ const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const Manager = require('./lib/Manager')
-const generatePage = require('./src/page-template')
+const generateManagerCard = require('./src/manager-card')
+const generateEngineerCards = require('./src/engineer-card')
+const generateInternCards = require('./src/intern-card')
 
 //start
 // new array of employees?
@@ -15,12 +17,11 @@ class Prompt {
         this.engineers = []
         this.interns = []
         this.engineerCount = 0
-        this.internCount = 0
-
-        
+        this.internCount = 0        
     }
 
     initializeTeam(){
+
         inquirer.prompt([{
             type: 'text',
             name: 'manager',
@@ -43,16 +44,14 @@ class Prompt {
         }]).then(answers => {
             const manager = new Manager(answers.manager, answers.id, answers.email, answers.officeNumber)
             this.projectManager = manager
-
-            //console.log(this.projectManager)
-        })
-        
+            return this.userSwitch()
+        })        
         }
 
     initializeEngineers() {
-        
-        console.log(this.engineerCount)
+
         this.engineerCount++
+
         inquirer.prompt([{
             type: 'text',
             name: 'engName',
@@ -75,14 +74,42 @@ class Prompt {
         }]).then(answers => {
             
             let count = this.engineerCount.toString()
-            this.engineers[count] = new Engineer(answers.engName, answers.engId, answers.engEmail, answers.github)            
-            // console.log(this.engineers)
-            console.log(Object.keys(this.engineers))
-            console.log(this.engineers.length - 1)
-            // console.log(this.engineers[0])
-            
+            this.engineers[count] = new Engineer(answers.engName, answers.engId, answers.engEmail, answers.github)
+            //console.log(Object.keys(this.engineers))
+            //console.log(this.engineers.length - 1)            
             return this.userSwitch()
+        })
+    }
 
+    initializeInterns() {
+        
+        this.internCount++
+
+        inquirer.prompt([{
+            type: 'text',
+            name: 'intName',
+            message: 'What is the Interns name?'
+        },
+        {
+            type: "input",
+            name: "intId",
+            message: "What is their employee ID number? "
+        },
+        {
+            type: "input",
+            name: "intEmail",
+            message: "What is their email address? "
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "What is their school they attended? "
+        }]).then(answers => {            
+            let count = this.internCount.toString()
+            this.interns[count] = new Intern(answers.intName, answers.intId, answers.intEmail, answers.school)            
+            //console.log(Object.keys(this.interns))
+            //console.log(this.interns.length - 1)            
+            return this.userSwitch()
         })
     }
 
@@ -92,23 +119,47 @@ class Prompt {
           type: 'list',
           message: 'What would you like to do next?',
           name: 'action',
-          choices: ['Add new Engineer', 'Finish Team']
+          choices: ['Add new Engineer', 'Add new Intern', 'Finish Team']
         })
+        // .then(({action}) => {
+        //    this.choiceSwitch(action)
+        // })  
+        
+        // If statement
         .then(({ action }) => {
             if (action === 'Add new Engineer') {
                 return this.initializeEngineers()
             }
+            else if (action === 'Add new Intern') {
+                return this.initializeInterns()
+            }
             else {
-                console.log(`You have ${this.engineers.length - 1} engineers on your Team`)
-                generatePage(this.engineers)
-
-
+                console.log("Team created!")
+                generateInternCards(this.interns)
+                generateEngineerCards(this.engineers)
+                generateManagerCard(this.projectManager)
             }
         })
-
     }
 
-
+    // choiceSwitch(action) {
+        
+    //     let choice = {
+    //         'Add new Engineer': function() {
+    //             new Prompt().initializeEngineers()
+    //         },
+    //             //this.initializeEngineers(),
+    //         'Add new Intern': function() {
+    //             new Prompt().initializeInterns
+    //         },
+            
+    //             //this.initializeInterns(),
+    //         'Finish Team': function() {
+    //             new prompt().generateCards()
+    //         }
+    //     }
+    //     return choice[action]
+    // }
 
     }
 
@@ -122,4 +173,20 @@ class Prompt {
 
 //when selected Finished building Team - the HTML is generated
 
-new Prompt().initializeEngineers()
+new Prompt().initializeTeam()
+
+
+// function choiceSwitch(action) {
+//     let choice = {
+//         'Add new Engineer': function() {
+//             return initializeEngineers()
+//         },
+//         'Add new Intern': function() {
+//             return initializeInterns
+//         },
+//         'Finish Team': function() {
+//             return console.log('Team Created!')
+//         }
+//     }
+//     return choice[action]()
+// }
