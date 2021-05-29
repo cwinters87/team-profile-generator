@@ -7,15 +7,14 @@ Organize and keep track of your current team by answering just a few questions
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Usage](#usage)
-- [Video Link and Photos of App](#Video Link and Photos of App)
+- [Demo](#demo)
 - [Tests](#tests)
 - [Questions](#questions)
 ## Installation
 💾 npm i
 ## Usage
 💻 Helps keep your team contact and info in a simple window on your browswer.
-## Video Link and Photos of App
+## Demo
 
 https://drive.google.com/file/d/1-IJ51c4_fBSEBcWIkRoUFNnayaB472cr/view?usp=sharing
 
