@@ -7,7 +7,8 @@ Organize and keep track of your current team by answering just a few questions
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
+- [Usage](#usage)
+- [Video Link and Photos of App](#Video Link and Photos of App)
 - [Tests](#tests)
 - [Questions](#questions)
 ## Installation
