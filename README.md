@@ -18,7 +18,7 @@ Organize and keep track of your current team by answering just a few questions
 💻 Helps keep your team contact and info in a simple window on your browswer.
 ## License
 
-![weatherdashboard](./assets/images/team.png)
+![team](.images/team.png)
 
 ## Contributing
 👪 Chris Winters
