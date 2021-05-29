@@ -1,7 +1,6 @@
 
   <h1 align="center">Team Profile Generator!</h1>
-  
-[![badge](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)<br />
+
 ## Description
 Organize and keep track of your current team by answering just a few questions
 ## Table of Contents
@@ -16,7 +15,9 @@ Organize and keep track of your current team by answering just a few questions
 💾 npm i
 ## Usage
 💻 Helps keep your team contact and info in a simple window on your browswer.
-## License
+## Video Link and Photos of App
+
+https://drive.google.com/file/d/1-IJ51c4_fBSEBcWIkRoUFNnayaB472cr/view?usp=sharing
 
 ![team](./images/team.png)
 
