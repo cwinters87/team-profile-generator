@@ -16,6 +16,7 @@ Organize and keep track of your current team by answering just a few questions
 💻 Helps keep your team contact and info in a simple window on your browswer.
 ## Demo
 
+Click link below to see a working demo:
 https://drive.google.com/file/d/1-IJ51c4_fBSEBcWIkRoUFNnayaB472cr/view?usp=sharing
 
 ![team](./images/team.png)
