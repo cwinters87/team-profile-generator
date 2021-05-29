@@ -1,7 +1,5 @@
 const inquirer = require('inquirer')
-const fs = require('fs')
 const generatePageTemplate = require('./src/page-template')
-const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const Manager = require('./lib/Manager')
@@ -10,7 +8,7 @@ const generateEngineerCards = require('./src/engineer-card')
 const generateInternCards = require('./src/intern-card')
 const writeFile = require('./src/generate-site')
 
-//start
+// Prompt start
 class Prompt {
     
     constructor() {
@@ -118,11 +116,7 @@ class Prompt {
           name: 'action',
           choices: ['Add new Engineer', 'Add new Intern', 'Finish Team']
         })
-        // .then(({action}) => {
-        //    this.choiceSwitch(action)
-        // })  
-        
-        // If statement
+    
         .then(({ action }) => {
             if (action === 'Add new Engineer') {
                 return this.initializeEngineers()
@@ -137,41 +131,8 @@ class Prompt {
         })
     }
 
-    // choiceSwitch(action) {
-        
-    //     let choice = {
-    //         'Add new Engineer': function() {
-    //             new Prompt().initializeEngineers()
-    //         },
-    //             //this.initializeEngineers(),
-    //         'Add new Intern': function() {
-    //             new Prompt().initializeInterns
-    //         },
-            
-    //             //this.initializeInterns(),
-    //         'Finish Team': function() {
-    //             new prompt().generateCards()
-    //         }
-    //     }
-    //     return choice[action]
-    // }
+}
 
-    }
-
+// Start
 new Prompt().initializeTeam()
 
-
-// function choiceSwitch(action) {
-//     let choice = {
-//         'Add new Engineer': function() {
-//             return initializeEngineers()
-//         },
-//         'Add new Intern': function() {
-//             return initializeInterns
-//         },
-//         'Finish Team': function() {
-//             return console.log('Team Created!')
-//         }
-//     }
-//     return choice[action]()
-// }
